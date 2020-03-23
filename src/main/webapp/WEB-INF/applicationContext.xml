@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="myProducer" class="mq.MyProducer"  init-method="init" destroy-method="destroy"  scope="singleton">
+        <property name="producerGroup" value="MyProducerGroup" />
+        <property name="namesrvAddr" value="127.0.0.1:9876" />
+    </bean>
+    <bean id="myConsumer" class="mq.MyConsumer" init-method="init" destroy-method="destroy" scope="singleton">
+        <property name="consumerGroup" value="MyConsumerGroup" />
+        <property name="namesrvAddr" value="127.0.0.1:9876" />
+    </bean>
+    <import resource="myCxf.xml"/>
+</beans>
